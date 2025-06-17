@@ -1,168 +1,171 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projectbeschrijving: CAO-vraag Assistent (AI-MVP)</title>
-  
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* Custom styles om de Tailwind setup aan te vullen */
-    body {
-      font-family: 'Inter', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    /* Stijl voor de copy-knop feedback */
-    .copied-feedback {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      background-color: #12ab78; /* Custom Groen */
-      color: white;
-      padding: 0.25rem 0.5rem;
-      border-radius: 0.375rem;
-      font-size: 0.75rem;
-      font-weight: 500;
-      display: none;
-      z-index: 10;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projectbeschrijving: CAO-vraag Assistent (AI-MVP)</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom styles to complement Tailwind setup */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .code-container {
+            position: relative;
+            background-color: #1f2937; /* slate-800 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 1rem; /* p-4 */
+            overflow-x: auto;
+        }
+        .code-container pre {
+            color: #f3f4f6; /* slate-100 */
+            font-size: 0.875rem; /* text-sm */
+        }
+         .code-container code {
+            font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", monospace;
+        }
+        /* Style for the quiz section */
+        details > summary {
+            cursor: pointer;
+            list-style-type: none; /* Hide default marker */
+        }
+        details > summary::-webkit-details-marker {
+            display: none; /* Hide default marker for Safari */
+        }
+        details > summary::before {
+            content: '▶';
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-  <div class="container mx-auto p-4 sm:p-6 lg:p-8">
-    <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
 
-      <!-- Header Sectie -->
-      <header class="mb-10 text-center">
-        <!-- Logo Invoegen -->
-        <img src="https://placehold.co/300x80/ffffff/3c277b?text=ActiZ+Kijk+op+AI" alt="Logo van ActiZ Kijk op AI" class="mx-auto mb-8 h-20 w-auto">
-        
-        <h1 class="text-4xl sm:text-5xl font-bold text-slate-900 mb-2">Project: CAO-Vraag Assistent</h1>
-        <p class="text-lg text-slate-600">Een AI-prototype (MVP) voor het beantwoorden van CAO-vragen</p>
-      </header>
+            <!-- Header Section -->
+            <header class="mb-10 text-center">
+                <!-- SVG Logo -->
+                <div class="flex justify-center mb-8">
+                    <svg width="250" height="67" viewBox="0 0 250 67" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto">
+                        <rect width="250" height="67" rx="12" fill="white"/>
+                        <text x="25" y="42" font-family="'Inter', sans-serif" font-size="28" font-weight="bold" fill="#3c277b">ActiZ</text>
+                        <line x1="120" y1="15" x2="120" y2="52" stroke="#e2e8f0" stroke-width="2"/>
+                        <text x="135" y="42" font-family="'Inter', sans-serif" font-size="22" fill="#475569">Kijk op AI</text>
+                    </svg>
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl font-bold text-slate-900 mb-2">Project: CAO-Vraag Assistent</h1>
+                <p class="text-lg text-slate-600">Een AI-prototype (MVP) voor het beantwoorden van CAO-vragen</p>
+            </header>
+            
+            <!-- Table of Contents -->
+            <section id="inhoudsopgave" class="mb-12 p-6 bg-slate-100 rounded-xl">
+                 <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-purple-700"><path d="M8 6h10"></path><path d="M6 12h12"></path><path d="M4 18h14"></path></svg>
+                    Inhoudsopgave
+                </h2>
+                <ul class="space-y-2 list-inside">
+                    <li><a href="#samenvatting" class="font-medium text-purple-700 hover:underline">1. Samenvatting & Belangrijke Tips</a></li>
+                    <li><a href="#waarom-langchain" class="font-medium text-purple-700 hover:underline">2. Waarom kiezen we voor LangChain?</a></li>
+                    <li><a href="#stap1" class="font-medium text-purple-700 hover:underline">3. Stap 1: Installatie & Voorbereiding</a></li>
+                    <li><a href="#stap2" class="font-medium text-purple-700 hover:underline">4. Stap 2: Bouw de Web App met AI</a></li>
+                    <li><a href="#stap3" class="font-medium text-purple-700 hover:underline">5. Stap 3: Extra Uitdaging voor de Experts</a></li>
+                    <li><a href="#begrippenlijst" class="font-medium text-purple-700 hover:underline">6. Begrippenlijst & Spiekbriefje</a></li>
+                    <li><a href="#kennischeck" class="font-medium text-purple-700 hover:underline">7. Kennischeck</a></li>
+                    <li><a href="#publiceren" class="font-medium text-purple-700 hover:underline">8. Publiceren op GitHub</a></li>
+                    <li><a href="#afronding" class="font-medium text-purple-700 hover:underline">9. Afronding & Certificaat</a></li>
+                </ul>
+            </section>
 
-      <!-- Samenvatting -->
-      <section class="mb-12 p-6 bg-slate-100 rounded-xl">
-        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3" style="color: #665095;"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
-          Samenvatting
-        </h2>
-        <p class="mb-4 text-slate-700">Dit document beschrijft een technisch prototype (MVP) van een AI-assistent die vragen over de CAO beantwoordt. De gekozen aanpak met <strong class="font-semibold" style="color: #3c277b;">LangChain</strong> in Python is veilig, uitbreidbaar en relatief eenvoudig te realiseren. We gebruiken open-source tools zoals <strong class="font-semibold text-slate-600">FAISS</strong>, <strong class="font-semibold text-slate-600">BM25</strong> en <strong class="font-semibold text-slate-600">HuggingFace-embeddings</strong> om maximale controle en flexibiliteit te behouden.</p>
+            <!-- Summary Section -->
+            <section id="samenvatting" class="mb-12 p-6 bg-slate-100 rounded-xl">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-purple-700"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+                    1. Samenvatting & Belangrijke Tips
+                </h2>
+                <p class="mb-4 text-slate-700">Dit document beschrijft een technisch prototype (MVP) van een AI-assistent die vragen over de CAO beantwoordt. De gekozen aanpak met <strong class="font-semibold text-purple-800">LangChain</strong> in Python is veilig, uitbreidbaar en relatief eenvoudig te realiseren. We gebruiken open-source tools zoals <strong class="font-semibold text-slate-600">FAISS</strong>, <strong class="font-semibold text-slate-600">BM25</strong> en <strong class="font-semibold text-slate-600">HuggingFace-embeddings</strong> om maximale controle en flexibiliteit te behouden. Schrik niet van de termen; ze komen allemaal aan bod en aan het einde staat een handige begrippenlijst.</p>
 
-        <div class="mt-6 p-4 border-l-4 rounded-r-lg" style="border-color: #665095; background-color: #e9e6f2;">
-          <h4 class="font-bold" style="color: #3c277b;">💡 Good to know: Wat is RAG?</h4>
-          <p class="mt-1" style="color: #3c277b;">Retrieval-Augmented Generation (RAG) is een AI-techniek waarbij het model eerst relevante informatie uit een bron (zoals een CAO-pdf) <strong class="font-semibold">opzoekt</strong> en die context vervolgens gebruikt om een nauwkeurig antwoord te <strong class="font-semibold">genereren</strong>. Dit zorgt voor feitelijke en betrouwbare antwoorden.</p>
-        </div>
-        
-        <div class="mt-6 p-4 border-l-4 rounded-r-lg" style="border-color: #5eb8c7; background-color: #edf6f9;">
-            <h4 class="font-bold" style="color: #00a1b4;">✨ Tip: Hulp nodig?</h4>
-            <p class="mt-1" style="color: #00a1b4;">Werkt er iets niet? Vraag dan gerust <strong class="font-semibold">ChatGPT 4o</strong>, <strong class="font-semibold">Claude 3</strong> of <strong class="font-semibold">Gemini 1.5 Pro</strong> om mee te kijken. De meeste issues zijn snel op te lossen en het is een goede manier om te leren.</p>
-        </div>
+                <!-- Tip: Getting help -->
+                <div class="mt-6 p-4 border-l-4 rounded-r-lg" style="border-color: #5eb8c7; background-color: #edf6f9;">
+                    <h4 class="font-bold" style="color: #00a1b4;">✨ Tip: Hulp nodig?</h4>
+                    <p class="mt-1" style="color: #008a9c;">Werkt er iets niet? Vraag dan een AI-assistent zoals <strong class="font-semibold">ChatGPT (4o)</strong>, <strong class="font-semibold">Claude 3 Opus</strong> of <strong class="font-semibold">Gemini 1.5 Pro</strong> om mee te kijken. Kopieer je code of maak een schermafbeelding. De meeste issues zijn snel op te lossen en het is een goede manier om te leren. Zie je een verbetering? Pas dit document dan direct aan!</p>
+                </div>
 
-        <div class="mt-6 p-4 border-l-4 rounded-r-lg" style="border-color: #F9B000; background-color: #fff8eb;">
-          <h4 class="font-bold" style="color: #c08000;">⚠️ Belangrijke Mededeling</h4>
-          <p class="mt-1" style="color: #c08000;">Dit prototype is een <strong class="font-semibold">interne testomgeving</strong> ('playground'). Verspreid de code of documentatie niet buiten het team zonder overleg. Deel <strong class="font-semibold">nooit</strong> API-sleutels of andere gevoelige data in externe AI-tools.</p>
-        </div>
-      </section>
+                <div class="mt-6 p-4 border-l-4 rounded-r-lg" style="border-color: #665095; background-color: #e9e6f2;">
+                    <h4 class="font-bold" style="color: #3c277b;">💡 Wat is RAG?</h4>
+                    <p class="mt-1" style="color: #3c277b;">Retrieval-Augmented Generation (RAG) is een AI-techniek waarbij het model eerst relevante informatie uit een bron (zoals een CAO-pdf) <strong class="font-semibold">opzoekt</strong> en die context vervolgens gebruikt om een nauwkeurig antwoord te <strong class="font-semibold">genereren</strong>. Dit zorgt voor feitelijke en betrouwbare antwoorden.</p>
+                </div>
+                
+                <div class="mt-6 p-4 border-l-4 rounded-r-lg" style="border-color: #14ab78; background-color: #f0f7f3;">
+                    <h4 class="font-bold" style="color: #0f7a55;">🚀 Pro Tip: Hybrid Search</h4>
+                    <p class="mt-1" style="color: #0f7a55;">Voor de beste zoekresultaten, combineer <strong class="font-semibold">keyword search (BM25)</strong> met <strong class="font-semibold">semantic search (FAISS)</strong>. Keywords vinden exacte termen (bv. "artikel 5.2"), terwijl semantiek de betekenis van een vraag begrijpt. Deze combinatie, 'Hybrid Search', geeft het beste van twee werelden en is een krachtige upgrade voor je RAG-systeem.</p>
+                </div>
 
-      <!-- Waarom LangChain -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3" style="color: #14ab78;"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
-            Waarom kiezen we voor LangChain?
-        </h2>
-        <p class="text-slate-600 mb-6">Uit de vergelijking van AI-technologieën blijkt LangChain een ideale middenweg voor dit project:</p>
-        <div class="grid md:grid-cols-2 gap-4">
-            <div class="p-4 rounded-lg" style="background-color: #f0f7f3;"><strong>Controle & Flexibiliteit:</strong> Volledige controle over prompts, geheugen, tools en integraties zoals RAG.</div>
-            <div class="p-4 rounded-lg" style="background-color: #f0f7f3;"><strong>Lokaal of Cloud:</strong> Werkt met Azure OpenAI, maar ook met lokale modellen via Ollama.</div>
-            <div class="p-4 rounded-lg" style="background-color: #f0f7f3;"><strong>Uitbreidbaarheid:</strong> Eenvoudig op te schalen van één CAO naar meerdere databronnen.</div>
-            <div class="p-4 rounded-lg" style="background-color: #f0f7f3;"><strong>Open Source:</strong> Actieve community, veel documentatie en snelle doorontwikkeling.</div>
-        </div>
-      </section>
-      
-      <!-- Keuze-ondersteuning -->
-      <section class="mb-12">
-          <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3" style="color: #c7547a;"><path d="m9 9 6 6m-6 0 6-6"></path><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"></path></svg>
-            Keuze-ondersteuning: Welke AI-tool?
-          </h2>
-          <div class="overflow-x-auto p-4 rounded-lg" style="background-color: #f8e9ee;">
-              <table class="min-w-full text-left text-sm">
-                  <thead class="font-semibold text-slate-800 border-b-2" style="border-color: #ecc8d3;">
-                      <tr>
-                          <th class="p-3">Als je dit wilt...</th>
-                          <th class="p-3">...dan kies je voor</th>
-                      </tr>
-                  </thead>
-                  <tbody class="divide-y" style="color: #b60056; divide-color: #ecc8d3;">
-                      <tr><td class="p-3">Gewoon wat proberen.</td><td class="p-3 font-medium">GPTs, Flowise, Copilot Studio</td></tr>
-                      <tr><td class="p-3">Zelf bouwen met veel controle.</td><td class="p-3 font-medium">LangChain, CrewAI, ADK</td></tr>
-                      <tr><td class="p-3">Agents laten samenwerken.</td><td class="p-3 font-medium">CrewAI (snel), ADK (stabiel)</td></tr>
-                      <tr><td class="p-3">AI op je eigen data.</td><td class="p-3 font-medium">LlamaIndex, Haystack</td></tr>
-                      <tr><td class="p-3">AI die taken uitvoert en plant.</td><td class="p-3 font-medium">ADK, AutoGen, LangGraph</td></tr>
-                      <tr><td class="p-3">Lokaal draaien.</td><td class="p-3 font-medium">Flowise + Ollama, LangChain</td></tr>
-                  </tbody>
-              </table>
-          </div>
-      </section>
+                <!-- Sparring Partner Moment 1 -->
+                <div class="mt-6 p-4 border-l-4 rounded-r-lg" style="border-color: #2563eb; background-color: #eff6ff;">
+                    <h4 class="font-bold" style="color: #1d4ed8;">🤖 Jouw AI-Sparringpartner</h4>
+                    <p class="mt-1" style="color: #1e40af;">Nu je de theorie van Hybrid Search kent, daag je AI-assistent uit! Vraag bijvoorbeeld: <strong class="font-semibold">"Kun je me in eenvoudige termen uitleggen waarom de combinatie van keyword search en semantic search betere resultaten geeft dan elk afzonderlijk? Geef een praktisch voorbeeld."</strong> Zo toets je je eigen begrip en leer je het concept dieper doorgronden.</p>
+                </div>
+                
+                <div class="mt-6 p-4 border-l-4 rounded-r-lg" style="border-color: #F9B000; background-color: #fff8eb;">
+                    <h4 class="font-bold" style="color: #c08000;">⚠️ Belangrijke Mededeling</h4>
+                    <p class="mt-1" style="color: #c08000;">Dit prototype is een <strong class="font-semibold">interne testomgeving</strong> ('playground'). Verspreid de code of documentatie niet buiten het team zonder overleg. Deel <strong class="font-semibold">nooit</strong> API-sleutels of andere gevoelige data in externe AI-tools.</p>
+                </div>
+            </section>
 
-      <!-- Werkwijze in 5 stappen -->
-      <section class="mb-12">
-          <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3" style="color: #3c277b;"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect width="8" height="4" x="8" y="2" rx="1" ry="1"></rect></svg>
-              Werkwijze: MVP bouwen in 5 stappen
-          </h2>
-          <div class="space-y-4">
-              <div class="flex items-start p-4 bg-slate-50 rounded-lg">
-                  <div class="flex-shrink-0 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold" style="background-color: #665095;">1</div>
-                  <div class="ml-4"><h3 class="font-semibold text-slate-800">Voorbereiding</h3><p class="text-slate-600">CAO in TXT/PDF, LangChain, OpenAI key, Python 3.10+.</p></div>
-              </div>
-              <div class="flex items-start p-4 bg-slate-50 rounded-lg">
-                  <div class="flex-shrink-0 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold" style="background-color: #665095;">2</div>
-                  <div class="ml-4"><h3 class="font-semibold text-slate-800">Document Parser</h3><p class="text-slate-600">Tekst uit de CAO extraheren.</p></div>
-              </div>
-              <div class="flex items-start p-4 bg-slate-50 rounded-lg">
-                  <div class="flex-shrink-0 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold" style="background-color: #665095;">3</div>
-                  <div class="ml-4"><h3 class="font-semibold text-slate-800">Prompt Engineering</h3><p class="text-slate-600">Input en output structureren.</p></div>
-              </div>
-              <div class="flex items-start p-4 bg-slate-50 rounded-lg">
-                  <div class="flex-shrink-0 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold" style="background-color: #665095;">4</div>
-                  <div class="ml-4"><h3 class="font-semibold text-slate-800">Query Interface</h3><p class="text-slate-600">Een simpele UI bouwen met Streamlit.</p></div>
-              </div>
-               <div class="flex items-start p-4 bg-slate-50 rounded-lg">
-                  <div class="flex-shrink-0 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold" style="background-color: #665095;">5</div>
-                  <div class="ml-4"><h3 class="font-semibold text-slate-800">Testen</h3><p class="text-slate-600">Testen met praktijkvragen.</p></div>
-              </div>
-          </div>
-      </section>
-
-      <!-- Installatie Stappen -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3" style="color: #00a1b4;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" x2="12" y1="22.08" y2="12"></line></svg>
-            🛠️ Stap 1: Installatie & Voorbereiding
-        </h2>
-        
-        <ol class="space-y-8 relative border-l-2 border-slate-200 ml-4">
-            <li class="pl-10"><span class="absolute -left-4 flex items-center justify-center w-8 h-8 rounded-full font-bold" style="background-color: #d1e8ed; color: #00a1b4;">1</span><h3 class="font-semibold text-lg text-slate-800">Installeer de basis (Python & VS Code)</h3><p class="text-slate-600">Download en installeer <a href="https://www.python.org/downloads/" target="_blank" class="font-medium hover:underline" style="color: #5eb8c7;">Python 3.10+</a> (vink "Add to PATH" aan) en <a href="https://code.visualstudio.com/" target="_blank" class="font-medium hover:underline" style="color: #5eb8c7;">Visual Studio Code</a>.</p></li>
-            <li class="pl-10"><span class="absolute -left-4 flex items-center justify-center w-8 h-8 rounded-full font-bold" style="background-color: #d1e8ed; color: #00a1b4;">2</span><h3 class="font-semibold text-lg text-slate-800">Project opzetten</h3><p class="text-slate-600 mb-2">Maak een projectmap, open deze in VS Code en open de terminal (Beeld > Terminal).</p><p class="text-slate-600">Activeer een virtuele omgeving (aanbevolen):</p><div class="code-container mt-2"><pre><code class="language-bash">python -m venv venv
+            <!-- Why LangChain Section -->
+            <section id="waarom-langchain" class="mb-12">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-green-600"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                    2. Waarom kiezen we voor LangChain?
+                </h2>
+                <p class="text-slate-600 mb-6">Uit de vergelijking van AI-technologieën blijkt LangChain een ideale middenweg voor dit project:</p>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-lg bg-green-50 text-green-800"><strong>Controle & Flexibiliteit:</strong> Volledige controle over prompts, geheugen, tools en integraties zoals RAG.</div>
+                    <div class="p-4 rounded-lg bg-green-50 text-green-800"><strong>Lokaal of Cloud:</strong> Werkt met Azure OpenAI, maar ook met lokale modellen via Ollama.</div>
+                    <div class="p-4 rounded-lg bg-green-50 text-green-800"><strong>Uitbreidbaarheid:</strong> Eenvoudig op te schalen van één CAO naar meerdere databronnen.</div>
+                    <div class="p-4 rounded-lg bg-green-50 text-green-800"><strong>Open Source:</strong> Actieve community, veel documentatie en snelle doorontwikkeling.</div>
+                </div>
+            </section>
+            
+            <!-- Installation Steps Section -->
+            <section id="stap1" class="mb-12">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-cyan-600"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" x2="12" y1="22.08" y2="12"></line></svg>
+                    3. Stap 1: Installatie & Voorbereiding
+                </h2>
+                
+                <ol class="space-y-8 relative border-l-2 border-slate-200 ml-4">
+                    <li class="pl-10"><span class="absolute -left-4 flex items-center justify-center w-8 h-8 bg-cyan-100 text-cyan-700 rounded-full font-bold">1</span><h3 class="font-semibold text-lg text-slate-800">Installeer de basis (Python & VS Code) <span class="text-sm font-normal text-slate-500 ml-2">(ca. 10-15 min)</span></h3><p class="text-slate-600">Download en installeer <a href="https://www.python.org/downloads/" target="_blank" class="font-medium text-cyan-600 hover:underline">Python 3.10+</a> (vink "Add to PATH" aan) en <a href="https://code.visualstudio.com/" target="_blank" class="font-medium text-cyan-600 hover:underline">Visual Studio Code</a>.</p></li>
+                    <li class="pl-10"><span class="absolute -left-4 flex items-center justify-center w-8 h-8 bg-cyan-100 text-cyan-700 rounded-full font-bold">2</span><h3 class="font-semibold text-lg text-slate-800">Project opzetten <span class="text-sm font-normal text-slate-500 ml-2">(ca. 5 min)</span></h3><p class="text-slate-600 mb-2">Maak een projectmap, open deze in VS Code en open de terminal (Beeld > Terminal). Activeer een virtuele omgeving (aanbevolen):</p><div class="code-container mt-2"><pre><code class="language-bash">python -m venv venv
 .\venv\Scripts\activate</code></pre></div></li>
-            <li class="pl-10"><span class="absolute -left-4 flex items-center justify-center w-8 h-8 rounded-full font-bold" style="background-color: #d1e8ed; color: #00a1b4;">3</span><h3 class="font-semibold text-lg text-slate-800">Installeer Python Pakketten</h3><p class="text-slate-600 mb-2">Voer dit commando uit in je terminal:</p><div class="code-container mt-2"><pre><code class="language-bash">pip install langchain langchain-openai python-dotenv langchain-community</code></pre></div></li>
-             <li class="pl-10"><span class="absolute -left-4 flex items-center justify-center w-8 h-8 rounded-full font-bold" style="background-color: #d1e8ed; color: #00a1b4;">4</span><h3 class="font-semibold text-lg text-slate-800">Maak een <code>.env</code> bestand</h3><p class="text-slate-600 mb-2">Maak in je projectmap een bestand genaamd <code>.env</code> en voeg je Azure OpenAI-sleutels toe. Vervang <code>xxxxx</code> door je eigen keys.</p><div class="code-container mt-2"><pre><code class="language-ini"># Azure OpenAI settings
-OPENAI_API_KEY=xxxxx
-OPENAI_ENDPOINT=https://prd-oai-sw-svc.openai.azure.com/
-OPENAI_API_VERSION=2024-02-15-preview
-OPENAI_GPT_DEPLOYMENT=gpt-4</code></pre></div></li>
-             <li class="pl-10"><span class="absolute -left-4 flex items-center justify-center w-8 h-8 rounded-full font-bold" style="background-color: #d1e8ed; color: #00a1b4;">5</span><h3 class="font-semibold text-lg text-slate-800">Test je setup met <code>main.py</code></h3><p class="text-slate-600 mb-2">Maak een <code>main.py</code> bestand en plak de onderstaande code. Dit script test de verbinding met de AI-service.</p><div class="code-container mt-2"><pre><code class="language-python">from langchain_openai import AzureChatOpenAI
+                    <li class="pl-10"><span class="absolute -left-4 flex items-center justify-center w-8 h-8 bg-cyan-100 text-cyan-700 rounded-full font-bold">3</span><h3 class="font-semibold text-lg text-slate-800">Installeer Python Pakketten <span class="text-sm font-normal text-slate-500 ml-2">(ca. 5-10 min)</span></h3><p class="text-slate-600 mb-2">Voer dit commando uit in je terminal:</p><div class="code-container mt-2"><pre><code class="language-bash">pip install langchain langchain-openai python-dotenv langchain-community streamlit pypdf faiss-cpu sentence-transformers rank_bm25</code></pre></div></li>
+                    <li class="pl-10"><span class="absolute -left-4 flex items-center justify-center w-8 h-8 bg-cyan-100 text-cyan-700 rounded-full font-bold">4</span><h3 class="font-semibold text-lg text-slate-800">Maak een <code>.env</code> bestand <span class="text-sm font-normal text-slate-500 ml-2">(ca. 5 min)</span></h3><p class="text-slate-600 mb-2">Maak in je projectmap een bestand genaamd <code>.env</code> en voeg je Azure OpenAI-sleutels toe. Vervang <code>xxxxx</code> door je eigen keys. Heb je (nog) geen Azure OpenAI toegang? Informeer bij Martijn naar een API-sleutel en geef voor de zekerheid even je IP adres door zodat hij je kan whitelisten.</p><div class="code-container mt-2"><pre><code class="language-ini"># Azure OpenAI settings
+OPENAI_API_KEY="xxxxx"
+OPENAI_ENDPOINT="https://prd-oai-sw-svc.openai.azure.com/"
+OPENAI_API_VERSION="2024-02-15-preview"
+OPENAI_GPT_DEPLOYMENT="gpt-4"</code></pre></div></li>
+                    <li class="pl-10"><span class="absolute -left-4 flex items-center justify-center w-8 h-8 bg-cyan-100 text-cyan-700 rounded-full font-bold">5</span><h3 class="font-semibold text-lg text-slate-800">Test je setup met <code>main.py</code> <span class="text-sm font-normal text-slate-500 ml-2">(ca. 60 min, incl. oplossen van eventuele fouten)</span></h3><p class="text-slate-600 mb-2">Maak een <code>main.py</code> bestand en plak de onderstaande code. Dit script test de verbinding met de AI-service.</p><div class="code-container mt-2"><pre><code class="language-python">from langchain_openai import AzureChatOpenAI
 from langchain.schema import SystemMessage, HumanMessage
 from dotenv import load_dotenv
 import os
@@ -176,145 +179,387 @@ api_base = os.getenv("OPENAI_ENDPOINT")
 deployment = os.getenv("OPENAI_GPT_DEPLOYMENT")
 version = os.getenv("OPENAI_API_VERSION")
 
-# Initieer model
-llm = AzureChatOpenAI(
-    azure_deployment=deployment,
-    azure_endpoint=api_base,
-    api_key=api_key,
-    api_version=version,
-    temperature=0
-)
+# Valideer of alle variabelen zijn geladen
+if not all([api_key, api_base, deployment, version]):
+    print("Een of meer omgevingsvariabelen ontbreken. Controleer je .env bestand.")
+else:
+    # Initieer model
+    llm = AzureChatOpenAI(
+        azure_deployment=deployment,
+        azure_endpoint=api_base,
+        api_key=api_key,
+        api_version=version,
+        temperature=0
+    )
 
-# Simpele test
-messages = [
-    SystemMessage(content="Je bent een behulpzame assistent."),
-    HumanMessage(content="Wat staat er in de CAO over overwerk?")
-]
+    # Simpele test
+    messages = [
+        SystemMessage(content="Je bent een behulpzame assistent."),
+        HumanMessage(content="Wat staat er in de CAO over overwerk?")
+    ]
 
-response = llm.invoke(messages)
-print(response.content)
-</code></pre></div><p class="text-slate-600 mt-2">Voer het script uit met <code>python main.py</code>. Als alles werkt, krijg je een antwoord van de AI!</p></li>
-        </ol>
-      </section>
-      
-      <!-- Volgende Stappen -->
-      <section class="mb-12 p-6 border-2 rounded-2xl" style="background-color: #e9e6f2; border-color: #cac1de;">
-        <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3" style="color: #3c277b;"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-            ✅ Volgende Stappen: Bouw een Web App!
-        </h2>
-        <p class="text-slate-700 mb-4">Nu de basis werkt, wordt het pas echt leuk! De volgende uitdaging is om je MVP uit te breiden naar een eenvoudige webpagina waar gebruikers vragen kunnen stellen. Gebruik hiervoor <strong class="font-semibold" style="color: #3c277b;">Streamlit</strong>.</p>
-        <p class="text-slate-700">Het doel is een assistent te maken die de <strong class="font-semibold">volledige CAO (PDF)</strong> kan inlezen, met RAG de juiste informatie zoekt, en een antwoord formuleert inclusief <strong class="font-semibold">bronverwijzingen</strong> (pagina, artikel). Wees creatief met de interface!</p>
-      </section>
-      
-      <!-- Publiceren op GitHub -->
-      <section class="mb-12">
-          <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-              🚀 Publiceren op GitHub
-          </h2>
-          <p class="text-slate-600 mb-6">Voordat je je project deelt, is het slim om je repository netjes voor te bereiden.</p>
-          <div class="space-y-6">
-              <div class="p-4 bg-slate-50 rounded-lg border">
-                  <h3 class="font-semibold text-slate-800">1. Maak een <code>.gitignore</code> bestand</h3>
-                  <p class="text-slate-600 mt-1">Voorkom dat gevoelige bestanden (zoals <code>.env</code>) en onnodige mappen (zoals <code>venv</code>) worden geüpload.</p>
-              </div>
-              <div class="p-4 bg-slate-50 rounded-lg border">
-                  <h3 class="font-semibold text-slate-800">2. Genereer een <code>requirements.txt</code></h3>
-                  <p class="text-slate-600 mt-1">Leg de benodigde Python-pakketten vast zodat anderen je project makkelijk kunnen installeren. Gebruik <code>pip freeze > requirements.txt</code>.</p>
-              </div>
-              <div class="p-4 bg-slate-50 rounded-lg border">
-                  <h3 class="font-semibold text-slate-800">3. Scan op veiligheidsrisico's</h3>
-                  <p class="text-slate-600 mt-1">Controleer je gebruikte pakketten op bekende kwetsbaarheden met <code>pip install pip-audit && pip-audit</code>.</p>
-              </div>
-              <div class="p-6 bg-slate-50 rounded-lg border">
-                  <h3 class="font-semibold text-slate-800 text-lg mb-3">4. Gebruik een Personal Access Token (PAT)</h3>
-                  <p class="text-slate-600">Voor het pushen naar GitHub is een token veiliger dan je wachtwoord. Ga naar <a href="https://github.com/settings/tokens" target="_blank" class="font-medium hover:underline" style="color: #5eb8c7;">GitHub Tokens</a>, genereer een nieuw token (Classic of Fine-grained) met <strong class="font-semibold">`repo`</strong> (of `Contents: Read and write`) rechten. Kopieer het token. Wanneer de terminal om je wachtwoord vraagt, plak je het token.</p>
-              </div>
-          </div>
-      </section>
-      
-      <!-- Voordelen Eigen App -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3" style="color: #14ab78;"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"></path><path d="M16.243 7.757a2 2 0 0 0-2.829 0L12 9.172l-1.414-1.415a2 2 0 1 0-2.828 2.828L10.586 12l-1.414 1.414a2 2 0 1 0 2.828 2.828L12 14.828l1.414 1.414a2 2 0 1 0 2.829-2.828L13.414 12l1.415-1.414a2 2 0 0 0 0-2.829z"></path></svg>
-                Waarom een eigen AI-app bouwen?
-            </h2>
-            <ul class="space-y-3 text-slate-700 list-disc list-outside pl-5">
-                <li><strong class="font-semibold text-slate-800">Hogere nauwkeurigheid:</strong> De AI antwoordt op basis van jóuw documenten, niet op basis van algemene kennis. Dit voorkomt "hallucinaties".</li>
-                <li><strong class="font-semibold text-slate-800">Meerdere databronnen:</strong> Combineer eenvoudig een CAO, een beleidsregel en een handreiking in één assistent.</li>
-                <li><strong class="font-semibold text-slate-800">Slimmere zoektechnieken:</strong> Pas geavanceerde filters en zoekmethodes toe voor betere resultaten.</li>
-                <li><strong class="font-semibold text-slate-800">Tools en logica toevoegen:</strong> Laat de AI berekeningen uitvoeren of externe informatie opzoeken.</li>
-                <li><strong class="font-semibold text-slate-800">Grip op veiligheid:</strong> Jij bepaalt welke data wordt gebruikt, wat wordt gelogd en hoe het systeem reageert.</li>
-                <li><strong class="font-semibold text-slate-800">Schaalbaarheid:</strong> Eenvoudig te verbeteren en uit te rollen naar andere onderwerpen of sectoren.</li>
-            </ul>
-        </section>
+    try:
+        response = llm.invoke(messages)
+        print("AI Antwoord:", response.content)
+    except Exception as e:
+        print(f"Er is een fout opgetreden: {e}")
 
-        <!-- Leertraject -->
-        <section>
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3" style="color: #F9B000;"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>
-                Suggestie voor Leertraject
-            </h2>
-            <ol class="list-decimal list-inside space-y-2 text-slate-700">
-                <li>Begin met een <strong>reactieve agent</strong> (zoals deze MVP).</li>
-                <li>Bouw een <strong>vergelijkingsagent</strong> voor twee documenten.</li>
-                <li>Maak een <strong>tool-agent</strong> die kan rekenen of info opzoekt.</li>
-                <li>Laat een <strong>plannende agent</strong> adviezen geven.</li>
-                <li>Combineer alles in een <strong>multi-agent systeem</strong>.</li>
-            </ol>
-        </section>
+</code></pre></div>
+<p class="text-slate-600 mt-4">Voer het script uit met <code>python main.py</code> in je terminal.</p>
+<div class="mt-4 p-4 border-l-4 border-green-500 bg-green-50 rounded-r-lg">
+    <p class="font-semibold text-green-800">Checkpoint: Zie je een antwoord van de AI in je terminal verschijnen? Mooi, dan heb je de basisverbinding succesvol opgezet! Gefeliciteerd, weer een mijlpaal behaald.</p>
+</div>
+</li>
+                </ol>
+            </section>
+            
+            <!-- Next Steps Section -->
+            <section id="stap2" class="mb-12 p-6 border-2 rounded-2xl" style="background-color: #e9e6f2; border-color: #cac1de;">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-purple-700"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    4. Stap 2: Bouw de Web App met AI!
+                </h2>
+                <p class="text-slate-600 mb-4">Neem voor deze stap ruim de tijd, ongeveer <strong class="font-semibold">60 minuten</strong>. Dit is inclusief de tijd die je de AI geeft om de code te genereren en de tijd om de app zelf te testen en eventuele fouten op te lossen.</p>
+                <p class="text-slate-700 mb-4">Nu de basisverbinding werkt, is het tijd voor de echte uitdaging: de interactieve web-app bouwen met Streamlit. Maar je hoeft het niet alleen te doen! Vraag een AI-assistent om je op weg te helpen.</p>
+                <p class="text-slate-600 mb-2 font-medium">Kopieer de onderstaande prompt en plak deze in <strong class="text-purple-800">ChatGPT (4o)</strong>, <strong class="text-purple-800">Claude 3 Opus</strong> of <strong class="text-purple-800">Gemini 1.5 Pro</strong>. Vraag de AI om de Python-code voor je te schrijven.</p>
+                <div class="code-container mt-2">
+                    <pre><code class="language-text">Creëer een complete Python Streamlit-app voor mij in één bestand genaamd app.py. De app moet de volgende functionaliteiten hebben:
 
+1.  **Titel:** De titel van de app is "CAO Vraag-Assistent".
+2.  **PDF Upload:** Een gebruiker moet een PDF-bestand (de CAO) kunnen uploaden via een file uploader in de sidebar.
+3.  **Verwerking:** Nadat de PDF is geüpload, moet de app:
+    a. De tekst uit de PDF extraheren.
+    b. De tekst opsplitsen in behapbare 'chunks'.
+    c. Deze chunks omzetten naar 'embeddings' met een HuggingFace-model (gebruik `HuggingFaceEmbeddings` met `sentence-transformers/all-MiniLM-L6-v2`).
+    d. De embeddings opslaan in een FAISS vector store. Deze vector store moet in de sessie van de gebruiker bewaard blijven.
+4.  **Vraag & Antwoord:**
+    a. Een tekstinvoerveld waar de gebruiker een vraag kan stellen over de CAO.
+    b. Wanneer een vraag wordt ingediend, moet de app de relevante chunks uit de vector store ophalen.
+    c. Deze chunks, samen met de vraag, doorsturen naar een taalmodel (gebruik de `AzureChatOpenAI` setup).
+    d. Het antwoord van het taalmodel weergeven aan de gebruiker.
+5.  **Vereisten:** Gebruik de volgende Python-pakketten: `streamlit`, `pypdf`, `langchain`, `faiss-cpu`, `sentence-transformers`, `python-dotenv`, `langchain-openai`. Zorg dat de code de omgevingsvariabelen voor Azure OpenAI uit een `.env`-bestand laadt. De gehele logica moet in functies worden georganiseerd voor de duidelijkheid.</code></pre>
+                </div>
+                 <p class="text-slate-700 mt-4">Sla de gegenereerde code op als <code>app.py</code>. Voer het daarna uit in je terminal met het commando: <code>streamlit run app.py</code></p>
+                 <div class="mt-4 p-4 border-l-4 border-green-500 bg-green-50 rounded-r-lg">
+                     <p class="font-semibold text-green-800">Checkpoint: Als het goed is, opent er nu een webpagina in je browser. Fantastisch! Je hebt zojuist je eerste interactieve AI-app gebouwd. Neem even de tijd om het te proberen. Werkt het niet? Geen probleem! Kopieer de foutmelding en vraag de AI om de code voor je te debuggen. Dit is de snelste manier om te leren.</p>
+                 </div>
+            </section>
+
+            <!-- Bonus Challenge Section -->
+            <section id="stap3" class="mb-12 p-6 bg-yellow-50 border-2 border-yellow-200 rounded-2xl">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-yellow-500"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 11 2 2 4-4"></path><path d="M12 2v2"></path><path d="M12 18v2"></path><path d="M4.93 4.93l1.41 1.41"></path><path d="M17.66 17.66l1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="M4.93 19.07l1.41-1.41"></path><path d="M17.66 6.34l1.41-1.41"></path></svg>
+                    5. Stap 3: Extra Uitdaging voor de Experts
+                </h2>
+                <p class="text-slate-600 mb-4">Reken voor deze extra uitdagingen op ongeveer <strong class="font-semibold">90 minuten</strong> extra, afhankelijk van je ervaring en hoe diep je wilt gaan.</p>
+                <p class="text-slate-700 mb-4">Heb je de basis-app werkend en wil je meer? Perfect! Hier zijn een paar uitdagingen om je RAG-assistent naar een hoger niveau te tillen. Vraag je favoriete AI-assistent om je te helpen met de code.</p>
+                <div class="space-y-4 mt-6">
+                    <div class="p-4 bg-white rounded-lg border">
+                        <h3 class="font-semibold text-slate-800">1. Index Vooraf Bouwen</h3>
+                        <p class="text-slate-600 mt-1">Maak een apart Python-script (bv. <code>build_index.py</code>) dat de CAO-PDF inleest, verwerkt en de FAISS-index lokaal opslaat. In je Streamlit-app hoef je deze index dan alleen nog maar te laden. <strong class="font-medium">Voordeel:</strong> Je app start veel sneller op, omdat het zware werk al is gedaan.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg border">
+                        <h3 class="font-semibold text-slate-800">2. Implementeer Hybrid Search</h3>
+                        <p class="text-slate-600 mt-1">Combineer de semantische zoekkracht van FAISS met de trefzekerheid van BM25 (keyword search). Gebruik de <code>BM25Retriever</code> uit LangChain naast je FAISS retriever om nog relevantere context te vinden. <strong class="font-medium">Voordeel:</strong> Grote verbetering in de nauwkeurigheid van de antwoorden.</p>
+                    </div>
+                     <div class="p-4 bg-white rounded-lg border">
+                        <h3 class="font-semibold text-slate-800">3. Bronvermelding met Metadata</h3>
+                        <p class="text-slate-600 mt-1">Zorg ervoor dat bij het inlezen van de PDF niet alleen de tekst, maar ook het paginanummer wordt opgeslagen als metadata bij elke chunk. Laat de AI in zijn antwoord altijd verwijzen naar de bronpagina's. <strong class="font-medium">Voordeel:</strong> De antwoorden worden controleerbaar en betrouwbaarder.</p>
+                    </div>
+                    <div class="p-4 bg-white rounded-lg border">
+                        <h3 class="font-semibold text-slate-800">4. Word Product Owner: Bedenk je Eigen Feature!</h3>
+                        <p class="text-slate-600 mt-1">Je hebt nu een krachtige basis. Wat zou de app nóg beter maken? Vraag je AI-sparringpartner: "Welke feature kan ik toevoegen aan mijn CAO RAG-app om deze nog nuttiger te maken? Geef me drie concrete ideeën en de stappen om één daarvan te implementeren." Denk aan het opslaan van gesprekken, of het vergelijken van twee CAO's. <strong class="font-medium">Voordeel:</strong> Je leert niet alleen programmeren, maar ook hoe je een AI-product ontwikkelt.</p>
+                    </div>
+                </div>
+                 <p class="text-slate-700 mt-4">Elke stap die je voltooit, maakt je assistent professioneler en krachtiger. Veel succes!</p>
+                  <!-- Sparring Partner Moment 2 -->
+                <div class="mt-6 p-4 border-l-4 rounded-r-lg" style="border-color: #2563eb; background-color: #eff6ff;">
+                    <h4 class="font-bold" style="color: #1d4ed8;">🤖 Jouw AI-Sparringpartner</h4>
+                    <p class="mt-1" style="color: #1e40af;">Je hebt nu een solide app. Wat nu? Gebruik je AI-assistent als een strategische partner. Vraag: <strong class="font-semibold">"Ik heb een RAG-app gebouwd die CAO-vragen beantwoordt. Welke 3 nieuwe features zouden de meeste waarde toevoegen voor een HR-medewerker? En welke technische stappen zijn daarvoor nodig?"</strong> Dit helpt je om productgericht te denken en een roadmap voor je app te ontwikkelen.</p>
+                </div>
+            </section>
+            
+            <!-- Glossary Section -->
+            <section id="begrippenlijst" class="mb-12">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-slate-500"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+                    6. Begrippenlijst & Spiekbriefje
+                </h2>
+                <p class="text-slate-600 mb-6">Om dit document voor iedereen toegankelijk te maken, volgt hier een overzicht van de belangrijkste termen en commando's.</p>
+
+                <!-- Category 1: Core Concepts -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-4 border-b pb-2">Kernbegrippen (De Theorie)</h3>
+                    <dl class="space-y-4">
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">RAG (Retrieval-Augmented Generation)</dt>
+                            <dd class="text-slate-600 mt-1">De techniek die we gebruiken. Eerst zoekt de AI relevante informatie op in een specifieke bron (de CAO), en gebruikt die kennis vervolgens om een feitelijk onderbouwd antwoord te formuleren.</dd>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Hybrid Search</dt>
+                            <dd class="text-slate-600 mt-1">De combinatie van zoeken op <strong class="font-medium">trefwoorden</strong> (zoals "artikel 5.2") en op <strong class="font-medium">betekenis</strong> (semantisch zoeken) voor de meest nauwkeurige resultaten.</dd>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Embeddings</dt>
+                            <dd class="text-slate-600 mt-1">Numerieke representaties (vectoren) van tekst. De AI gebruikt deze om de betekenis en context van woorden en zinnen te 'begrijpen' en met elkaar te vergelijken.</dd>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Vector Database (bv. FAISS)</dt>
+                            <dd class="text-slate-600 mt-1">Een speciaal type database, geoptimaliseerd om extreem snel te zoeken naar de meest relevante 'embeddings' die passen bij een gestelde vraag.</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <!-- Category 2: Technologies -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-4 border-b pb-2">Technologieën & Frameworks (De Bouwblokken)</h3>
+                    <dl class="space-y-4">
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">LangChain</dt>
+                            <dd class="text-slate-600 mt-1">Het 'brein' van onze applicatie. Een framework dat alle losse AI-onderdelen (zoals het taalmodel, de RAG-logica en de databronnen) aan elkaar knoopt tot een werkend geheel.</dd>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Streamlit</dt>
+                            <dd class="text-slate-600 mt-1">Een Python-bibliotheek waarmee we snel en eenvoudig een interactieve web-interface kunnen bouwen voor onze assistent, zonder complexe webdevelopment.</dd>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Python</dt>
+                            <dd class="text-slate-600 mt-1">De programmeertaal waarin we het hele project bouwen. Het is de meest populaire taal voor AI-toepassingen.</dd>
+                        </div>
+                         <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Azure OpenAI</dt>
+                            <dd class="text-slate-600 mt-1">De cloud-service van Microsoft die ons veilige en betrouwbare toegang geeft tot krachtige taalmodellen zoals GPT-4.</dd>
+                        </div>
+                    </dl>
+                </div>
+                
+                <!-- NEW: Cheatsheet for commands -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-4 border-b pb-2">Veelgebruikte Terminal Commando's (Spiekbriefje)</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Navigeer naar een map</dt>
+                            <dd class="text-slate-600 mt-1">Gebruik `cd` (change directory) om naar een specifieke map te gaan. Vervang `pad/naar/je/map` door het daadwerkelijke pad.</dd>
+                            <div class="code-container mt-2"><pre><code class="language-bash">cd pad/naar/je/map</code></pre></div>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Toon bestanden in de huidige map</dt>
+                            <dd class="text-slate-600 mt-1">Gebruik `ls` (list) op Mac/Linux of `dir` op Windows om te zien welke bestanden en mappen er in je huidige locatie staan.</dd>
+                            <div class="code-container mt-2"><pre><code class="language-bash">ls  # Voor Mac/Linux
+dir # Voor Windows</code></pre></div>
+                        </div>
+                         <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Activeer de virtuele omgeving</dt>
+                            <dd class="text-slate-600 mt-1">Essentieel om de juiste Python-pakketten voor je project te gebruiken.</dd>
+                            <div class="code-container mt-2"><pre><code class="language-bash">.\venv\Scripts\activate  # Voor Windows
+source venv/bin/activate # Voor Mac/Linux</code></pre></div>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Installeer een Python-pakket</dt>
+                            <dd class="text-slate-600 mt-1">Gebruik `pip install` om een nieuw softwarepakket aan je omgeving toe te voegen.</dd>
+                            <div class="code-container mt-2"><pre><code class="language-bash">pip install streamlit</code></pre></div>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Installeer alle pakketten uit een bestand</dt>
+                            <dd class="text-slate-600 mt-1">Installeert alle pakketten die in het `requirements.txt` bestand staan.</dd>
+                             <div class="code-container mt-2"><pre><code class="language-bash">pip install -r requirements.txt</code></pre></div>
+                        </div>
+                         <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Start een Python-script</dt>
+                            <dd class="text-slate-600 mt-1">Voert een Python-bestand uit, zoals ons `main.py` testscript.</dd>
+                             <div class="code-container mt-2"><pre><code class="language-bash">python main.py</code></pre></div>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Start de Streamlit-app</dt>
+                            <dd class="text-slate-600 mt-1">Start de webserver voor je Streamlit-applicatie.</dd>
+                            <div class="code-container mt-2"><pre><code class="language-bash">streamlit run app.py</code></pre></div>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Stop een draaiend programma</dt>
+                            <dd class="text-slate-600 mt-1">Gebruik `Ctrl + C` in de terminal om een programma (zoals de Streamlit-server) te stoppen.</dd>
+                             <div class="code-container mt-2"><pre><code class="language-bash"># Druk op je toetsenbord
+Ctrl + C</code></pre></div>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Maak een `requirements.txt` bestand</dt>
+                            <dd class="text-slate-600 mt-1">Genereert een lijst van alle geïnstalleerde Python-pakketten in je omgeving.</dd>
+                            <div class="code-container mt-2"><pre><code class="language-bash">pip freeze > requirements.txt</code></pre></div>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Maak de terminal schoon</dt>
+                            <dd class="text-slate-600 mt-1">Gebruik `clear` op Mac/Linux of `cls` op Windows om de terminal leeg te maken voor een frisse start.</dd>
+                             <div class="code-container mt-2"><pre><code class="language-bash">clear # Voor Mac/Linux
+cls   # Voor Windows</code></pre></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: Practical Terms -->
+                <div>
+                    <h3 class="text-xl font-semibold text-slate-800 mb-4 border-b pb-2">Praktische Termen (De Projectinrichting)</h3>
+                    <dl class="space-y-4">
+                         <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">MVP (Minimum Viable Product)</dt>
+                            <dd class="text-slate-600 mt-1">De allereerste, uitgeklede maar werkende versie van ons product. Bedoeld om snel te kunnen testen en feedback te verzamelen voor verdere ontwikkeling.</dd>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">API Key & Endpoint</dt>
+                            <dd class="text-slate-600 mt-1">Een geheime sleutel en een uniek webadres waarmee onze code veilig kan communiceren met de Azure OpenAI-service.</dd>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700"><code>.env</code> bestand</dt>
+                            <dd class="text-slate-600 mt-1">Een configuratiebestand waarin we geheime informatie, zoals API-sleutels, opslaan zodat deze niet direct in de code staan en veilig blijven.</dd>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg">
+                            <dt class="font-semibold text-slate-700">Virtual Environment (<code>venv</code>)</dt>
+                            <dd class="text-slate-600 mt-1">Een geïsoleerde map voor ons Python-project, zodat de benodigde softwarepakketten geen conflict veroorzaken met andere projecten op de computer.</dd>
+                        </div>
+                    </dl>
+                </div>
+            </section>
+            
+            <!-- Quiz Section -->
+            <section id="kennischeck" class="mb-12">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-purple-700"><path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.5A4.5 4.5 0 0 0 17.5 5c-1.55 0-2.96 1.06-4.5 2.06C11.46 6.06 10.05 5 8.5 5A4.5 4.5 0 0 0 4 9.5c0 4.5 3 12.5 6 12.5 1.25 0 2.5-1.06 4-1.06z"></path><path d="M12 6.5c-1.55-1-2.96-2.06-4.5-2.06A4.5 4.5 0 0 0 3 9c0 4.5 3 11.5 6 11.5 1.25 0 2.5-1.06 4-1.06"></path></svg>
+                    7. Kennischeck!
+                </h2>
+                <p class="text-slate-600 mb-6">Even testen of de belangrijkste concepten zijn blijven hangen. Probeer de onderstaande vragen te beantwoorden voordat je op 'Toon antwoord' klikt.</p>
+                <div class="space-y-4">
+                    <div class="p-4 bg-slate-50 rounded-lg border">
+                        <p class="font-semibold text-slate-800 mb-2">Vraag 1: Wat betekent de afkorting RAG en wat doet het?</p>
+                        <details>
+                            <summary class="font-medium text-purple-700 hover:underline">Toon antwoord</summary>
+                            <div class="mt-2 text-slate-600 pt-2 border-t">
+                                <p><strong class="font-semibold">Retrieval-Augmented Generation.</strong> Het is een techniek waarbij de AI eerst relevante informatie <strong class="font-medium">opzoekt (Retrieval)</strong> in een specifieke databron (onze CAO) en die gevonden context vervolgens gebruikt om een antwoord te <strong class="font-medium">formuleren (Generation)</strong>.</p>
+                            </div>
+                        </details>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-lg border">
+                        <p class="font-semibold text-slate-800 mb-2">Vraag 2: Waarom zouden we een `venv` (Virtual Environment) gebruiken?</p>
+                        <details>
+                            <summary class="font-medium text-purple-700 hover:underline">Toon antwoord</summary>
+                            <div class="mt-2 text-slate-600 pt-2 border-t">
+                                <p>Om de Python-pakketten voor ons project te <strong class="font-medium">isoleren</strong> van andere Python-projecten op de computer. Dit voorkomt conflicten tussen verschillende versies van de softwarepakketten.</p>
+                            </div>
+                        </details>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-lg border">
+                        <p class="font-semibold text-slate-800 mb-2">Vraag 3: Wat is het grote voordeel van Hybrid Search ten opzichte van alleen semantisch zoeken?</p>
+                        <details>
+                            <summary class="font-medium text-purple-700 hover:underline">Toon antwoord</summary>
+                            <div class="mt-2 text-slate-600 pt-2 border-t">
+                                <p>Hybrid Search combineert het beste van twee werelden: het vindt documenten op basis van <strong class="font-medium">exacte trefwoorden</strong> (zoals 'artikel 5.2' of een specifieke naam) én op basis van <strong class="font-medium">contextuele betekenis</strong>. Dit leidt tot veel relevantere en nauwkeurigere zoekresultaten.</p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Publishing on GitHub Section -->
+            <section id="publiceren" class="mb-12">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                    8. Publiceren op GitHub
+                </h2>
+                <p class="text-slate-600 mb-6">Voordat je je project deelt, is het slim om je repository netjes voor te bereiden.</p>
+                <div class="space-y-6">
+                    <div class="p-4 bg-slate-50 rounded-lg border"><h3 class="font-semibold text-slate-800">1. Maak een <code>.gitignore</code> bestand</h3><p class="text-slate-600 mt-1">Voorkom dat gevoelige bestanden (zoals <code>.env</code>) en onnodige mappen (zoals <code>venv</code>) worden geüpload.</p></div>
+                    <div class="p-4 bg-slate-50 rounded-lg border"><h3 class="font-semibold text-slate-800">2. Genereer een <code>requirements.txt</code></h3><p class="text-slate-600 mt-1">Leg de benodigde Python-pakketten vast zodat anderen je project makkelijk kunnen installeren. Gebruik <code>pip freeze > requirements.txt</code>.</p></div>
+                    <div class="p-4 bg-slate-50 rounded-lg border"><h3 class="font-semibold text-slate-800">3. Scan op veiligheidsrisico's</h3><p class="text-slate-600 mt-1">Controleer je gebruikte pakketten op bekende kwetsbaarheden met <code>pip install pip-audit && pip-audit</code>.</p></div>
+                    <div class="p-6 bg-slate-50 rounded-lg border"><h3 class="font-semibold text-slate-800 text-lg mb-3">4. Gebruik een Personal Access Token (PAT)</h3><p class="text-slate-600">Voor het pushen naar GitHub is een token veiliger dan je wachtwoord. Ga naar <a href="https://github.com/settings/tokens" target="_blank" class="font-medium text-cyan-600 hover:underline">GitHub Tokens</a>, genereer een nieuw token (Classic) met <strong class="font-semibold">`repo`</strong> rechten. Kopieer het token. Wanneer de terminal om je wachtwoord vraagt, plak je het token.</p></div>
+                </div>
+            </section>
+
+            <!-- Completion Section -->
+            <section id="afronding" class="text-center p-8 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-2xl shadow-2xl">
+                <h2 class="text-4xl font-bold mb-4">🎉 Gefeliciteerd! Je hebt de eindstreep bereikt!</h2>
+                <p class="text-lg text-indigo-200 mb-8">Je hebt alle stappen succesvol doorlopen: van de installatie tot het bouwen en testen van een complete, interactieve AI-applicatie. Dat is een prestatie om trots op te zijn!</p>
+                
+                <div class="bg-white text-slate-800 max-w-lg mx-auto p-6 rounded-lg shadow-inner border-4 border-yellow-300">
+                    <h3 class="text-2xl font-bold text-purple-800 mb-2">Certificaat van Voltooiing</h3>
+                    <p class="text-sm text-slate-500 mb-4">Uitreikt aan:</p>
+                    <p class="text-xl font-semibold mb-4">Een Toekomstige AI-Expert</p>
+                    <p class="text-slate-600 mb-4">Voor het succesvol bouwen van een functioneel AI-prototype (MVP) voor de CAO-Vraag Assistent met behulp van Python, LangChain en Streamlit.</p>
+                    <div class="mt-6 text-right text-sm text-slate-500">
+                        <p><em>Het ActiZ AI-Team</em></p>
+                        <p>Datum: 17 juni 2025</p>
+                    </div>
+                </div>
+
+                <p class="mt-8 text-indigo-200">En nu? Deel je succes! Laat je app zien aan je team, vertel erover in het volgende teamoverleg, en plaats je project op GitHub. Je hebt nu de basisvaardigheden in handen om zelf waarde te creëren met AI. De reis is nog maar net begonnen!</p>
+            </section>
+
+        </div>
     </div>
-  </div>
 
-  <script>
-    function setupCopyButtons() {
-      document.querySelectorAll('.code-container').forEach(container => {
-        const pre = container.querySelector('pre');
-        const code = container.querySelector('code');
-        const copyButton = document.createElement('button');
-        copyButton.className = 'absolute top-2 right-2 p-1.5 bg-slate-700 text-slate-300 rounded-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-purple-500 transition-colors';
-        copyButton.setAttribute('aria-label', 'Kopieer code');
-        copyButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>`;
-        const feedback = document.createElement('span');
-        feedback.className = 'copied-feedback';
-        feedback.textContent = 'Gekopieerd!';
-        container.appendChild(copyButton);
-        container.appendChild(feedback);
-        container.style.position = 'relative';
-
-        copyButton.addEventListener('click', () => {
-          const codeToCopy = code.innerText;
-          const textArea = document.createElement('textarea');
-          textArea.value = codeToCopy;
-          document.body.appendChild(textArea);
-          textArea.select();
-          try {
-            document.execCommand('copy');
-            feedback.style.display = 'block';
-            setTimeout(() => { feedback.style.display = 'none'; }, 2000);
-          } catch (err) {
-            console.error('Kopiëren mislukt', err);
-          }
-          document.body.removeChild(textArea);
-        });
-      });
-    }
-
-    function styleCodeBlocks() {
-        document.querySelectorAll('.code-container').forEach(container => {
-            container.classList.add('bg-slate-800', 'rounded-lg', 'p-4', 'overflow-x-auto');
-            container.querySelector('pre')?.classList.add('text-sm', 'text-slate-100');
-            container.querySelector('code')?.classList.add('font-mono');
-        });
-    }
-
+    <script>
     document.addEventListener('DOMContentLoaded', () => {
-        styleCodeBlocks();
+        // This function sets up the copy buttons for all code blocks
+        function setupCopyButtons() {
+            document.querySelectorAll('.code-container').forEach(container => {
+                const copyButton = document.createElement('button');
+                copyButton.className = 'absolute top-2 right-2 p-1.5 bg-slate-700 text-slate-300 rounded-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-purple-500 transition-colors';
+                copyButton.setAttribute('aria-label', 'Kopieer code');
+                
+                const copyIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>`;
+                const checkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-green-400"><path d="M20 6 9 17l-5-5"></path></svg>`;
+                
+                copyButton.innerHTML = copyIcon;
+                container.appendChild(copyButton);
+
+                copyButton.addEventListener('click', () => {
+                    const code = container.querySelector('code');
+                    if (navigator.clipboard && code) {
+                        navigator.clipboard.writeText(code.innerText).then(() => {
+                            copyButton.innerHTML = checkIcon;
+                            setTimeout(() => {
+                                copyButton.innerHTML = copyIcon;
+                            }, 2000);
+                        }).catch(err => {
+                            console.error('Kopiëren mislukt', err);
+                            // Fallback for older browsers
+                            fallbackCopy(code.innerText);
+                        });
+                    } else if (code) {
+                        // Fallback for older browsers or insecure contexts
+                        fallbackCopy(code.innerText, button, copyIcon, checkIcon);
+                    }
+                });
+            });
+        }
+        
+        // Fallback copy method using execCommand
+        function fallbackCopy(text, button, copyIcon, checkIcon) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            
+            // Avoid scrolling to bottom
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                document.execCommand('copy');
+                if (button && checkIcon && copyIcon) {
+                    button.innerHTML = checkIcon;
+                    setTimeout(() => {
+                        button.innerHTML = copyIcon;
+                    }, 2000);
+                }
+            } catch (err) {
+                console.error('Fallback: Kopiëren is mislukt', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
         setupCopyButtons();
     });
-  </script>
+    </script>
 
 </body>
 </html>
