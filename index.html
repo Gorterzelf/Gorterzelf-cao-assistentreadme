@@ -37,7 +37,7 @@
          .code-container code {
             font-family: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", monospace;
         }
-        /* Style for the quiz section */
+        /* Style for the quiz and details section */
         details > summary {
             cursor: pointer;
             list-style-type: none; /* Hide default marker */
@@ -139,7 +139,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-green-600"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 12 2 2 4-4"></path></svg>
                     2. Waarom kiezen we voor LangChain?
                 </h2>
-                <p class="text-slate-600 mb-6">Uit de vergelijking van AI-technologieën blijkt LangChain een ideale middenweg voor dit project:</p>
+                <p class="text-slate-600 mb-6">Uit de vergelijking van AI-technologieën blijkt LangChain een ideale middenweg. <strong class="font-semibold text-slate-800">Waarom?</strong> Omdat het ons de perfecte balans geeft tussen snelheid en controle:</p>
                 <div class="grid md:grid-cols-2 gap-4">
                     <div class="p-4 rounded-lg bg-green-50 text-green-800"><strong>Controle & Flexibiliteit:</strong> Volledige controle over prompts, geheugen, tools en integraties zoals RAG.</div>
                     <div class="p-4 rounded-lg bg-green-50 text-green-800"><strong>Lokaal of Cloud:</strong> Werkt met Azure OpenAI, maar ook met lokale modellen via Ollama.</div>
@@ -216,14 +216,23 @@ else:
             <!-- Next Steps Section -->
             <section id="stap2" class="mb-12 p-6 border-2 rounded-2xl" style="background-color: #e9e6f2; border-color: #cac1de;">
                 <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-purple-700"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-purple-700"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                     4. Stap 2: Bouw de Web App met AI!
                 </h2>
-                <p class="text-slate-600 mb-4">Neem voor deze stap ruim de tijd, ongeveer <strong class="font-semibold">60 minuten</strong>. Dit is inclusief de tijd die je de AI geeft om de code te genereren en de tijd om de app zelf te testen en eventuele fouten op te lossen.</p>
-                <p class="text-slate-700 mb-4">Nu de basisverbinding werkt, is het tijd voor de echte uitdaging: de interactieve web-app bouwen met Streamlit. Maar je hoeft het niet alleen te doen! Vraag een AI-assistent om je op weg te helpen.</p>
-                <p class="text-slate-600 mb-2 font-medium">Kopieer de onderstaande prompt en plak deze in <strong class="text-purple-800">ChatGPT (4o)</strong>, <strong class="text-purple-800">Claude 3 Opus</strong> of <strong class="text-purple-800">Gemini 1.5 Pro</strong>. Vraag de AI om de Python-code voor je te schrijven.</p>
-                <div class="code-container mt-2">
-                    <pre><code class="language-text">Creëer een complete Python Streamlit-app voor mij in één bestand genaamd app.py. De app moet de volgende functionaliteiten hebben:
+                <p class="text-slate-600 mb-4">Neem voor deze stap ruim de tijd, ongeveer <strong class="font-semibold">60 minuten</strong>. Dit is inclusief de tijd voor het schrijven van je prompt, het genereren van de code door de AI en het zelf testen van de app.</p>
+                <p class="text-slate-700 mb-4">Nu de basisverbinding werkt, is het tijd voor de echte uitdaging: de interactieve web-app bouwen met Streamlit. Probeer op basis van de onderstaande eisen <strong class="font-semibold">eerst zelf een goede prompt te schrijven</strong> voor je AI-assistent.</p>
+                <ul class="list-disc list-inside space-y-1 mb-4 text-slate-600">
+                    <li>Een titel voor de app.</li>
+                    <li>Een manier om een PDF te uploaden.</li>
+                    <li>Logica om de PDF te verwerken (tekst extraheren, opsplitsen, omzetten naar embeddings, opslaan in een vector store).</li>
+                    <li>Een invoerveld voor de gebruikersvraag en een plek om het antwoord te tonen.</li>
+                </ul>
+                <details class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                    <summary class="font-medium text-purple-700 hover:underline">Kom je er niet uit of heb je inspiratie nodig? Klik hier voor een voorbeelprompt.</summary>
+                    <div class="mt-4 pt-4 border-t border-purple-200">
+                        <p class="text-slate-600 mb-2 font-medium">Kopieer de onderstaande prompt en plak deze in je favoriete AI-assistent:</p>
+                        <div class="code-container mt-2">
+                            <pre><code class="language-text">Creëer een complete Python Streamlit-app voor mij in één bestand genaamd app.py. De app moet de volgende functionaliteiten hebben:
 
 1.  **Titel:** De titel van de app is "CAO Vraag-Assistent".
 2.  **PDF Upload:** Een gebruiker moet een PDF-bestand (de CAO) kunnen uploaden via een file uploader in de sidebar.
@@ -238,7 +247,9 @@ else:
     c. Deze chunks, samen met de vraag, doorsturen naar een taalmodel (gebruik de `AzureChatOpenAI` setup).
     d. Het antwoord van het taalmodel weergeven aan de gebruiker.
 5.  **Vereisten:** Gebruik de volgende Python-pakketten: `streamlit`, `pypdf`, `langchain`, `faiss-cpu`, `sentence-transformers`, `python-dotenv`, `langchain-openai`. Zorg dat de code de omgevingsvariabelen voor Azure OpenAI uit een `.env`-bestand laadt. De gehele logica moet in functies worden georganiseerd voor de duidelijkheid.</code></pre>
-                </div>
+                        </div>
+                    </div>
+                </details>
                  <p class="text-slate-700 mt-4">Sla de gegenereerde code op als <code>app.py</code>. Voer het daarna uit in je terminal met het commando: <code>streamlit run app.py</code></p>
                  <div class="mt-4 p-4 border-l-4 border-green-500 bg-green-50 rounded-r-lg">
                      <p class="font-semibold text-green-800">Checkpoint: Als het goed is, opent er nu een webpagina in je browser. Fantastisch! Je hebt zojuist je eerste interactieve AI-app gebouwd. Neem even de tijd om het te proberen. Werkt het niet? Geen probleem! Kopieer de foutmelding en vraag de AI om de code voor je te debuggen. Dit is de snelste manier om te leren.</p>
@@ -248,11 +259,10 @@ else:
             <!-- Bonus Challenge Section -->
             <section id="stap3" class="mb-12 p-6 bg-yellow-50 border-2 border-yellow-200 rounded-2xl">
                 <h2 class="text-2xl font-bold text-slate-900 mb-4 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-yellow-500"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 11 2 2 4-4"></path><path d="M12 2v2"></path><path d="M12 18v2"></path><path d="M4.93 4.93l1.41 1.41"></path><path d="M17.66 17.66l1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="M4.93 19.07l1.41-1.41"></path><path d="M17.66 6.34l1.41-1.41"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-yellow-500"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="m9 11 2 2 4-4"></path><path d="M12 2v2"></path><path d="M12 18v2"></path><path d="M4.93 4.93l1.41 1.41"></path><path d="M17.66 17.66l1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="M4.93 19.07l1.41-1.41"></path><path d="M17.66 6.34l1.41-1.41"></path></svg>
                     5. Stap 3: Extra Uitdaging voor de Experts
                 </h2>
-                <p class="text-slate-600 mb-4">Reken voor deze extra uitdagingen op ongeveer <strong class="font-semibold">90 minuten</strong> extra, afhankelijk van je ervaring en hoe diep je wilt gaan.</p>
-                <p class="text-slate-700 mb-4">Heb je de basis-app werkend en wil je meer? Perfect! Hier zijn een paar uitdagingen om je RAG-assistent naar een hoger niveau te tillen. Vraag je favoriete AI-assistent om je te helpen met de code.</p>
+                <p class="text-slate-700 mb-4"><strong class="font-semibold">Waarom zou je deze extra stappen doen?</strong> Omdat ze het verschil maken tussen een functioneel prototype en een écht professionele, snelle en betrouwbare applicatie die waarde toevoegt voor een eindgebruiker. Reken voor deze uitdagingen op ongeveer <strong class="font-semibold">90 minuten</strong> extra.</p>
                 <div class="space-y-4 mt-6">
                     <div class="p-4 bg-white rounded-lg border">
                         <h3 class="font-semibold text-slate-800">1. Index Vooraf Bouwen</h3>
@@ -282,7 +292,7 @@ else:
             <!-- Glossary Section -->
             <section id="begrippenlijst" class="mb-12">
                 <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-slate-500"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3 text-slate-500"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
                     6. Begrippenlijst & Spiekbriefje
                 </h2>
                 <p class="text-slate-600 mb-6">Om dit document voor iedereen toegankelijk te maken, volgt hier een overzicht van de belangrijkste termen en commando's.</p>
@@ -483,7 +493,7 @@ cls   # Voor Windows</code></pre></div>
                     <p class="text-slate-600 mb-4">Voor het succesvol bouwen van een functioneel AI-prototype (MVP) voor de CAO-Vraag Assistent met behulp van Python, LangChain en Streamlit.</p>
                     <div class="mt-6 text-right text-sm text-slate-500">
                         <p><em>Het ActiZ AI-Team</em></p>
-                        <p>Datum: 17 juni 2025</p>
+                        <p>Datum: 18 juni 2025</p>
                     </div>
                 </div>
 
@@ -502,7 +512,7 @@ cls   # Voor Windows</code></pre></div>
                 copyButton.className = 'absolute top-2 right-2 p-1.5 bg-slate-700 text-slate-300 rounded-md hover:bg-slate-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-800 focus:ring-purple-500 transition-colors';
                 copyButton.setAttribute('aria-label', 'Kopieer code');
                 
-                const copyIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>`;
+                const copyIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>`;
                 const checkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-green-400"><path d="M20 6 9 17l-5-5"></path></svg>`;
                 
                 copyButton.innerHTML = copyIcon;
